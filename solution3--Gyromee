@@ -1,0 +1,181 @@
+#include <iostream>
+#include <cmath>
+#include <string>
+
+using std::cout;
+using std::cin;
+using std::endl;
+
+//In Group with Mevin Chen, and Meng-Shen Kuan
+
+
+                                            //******** PART 1 ********
+
+                        /* In part 4 down below, We utilized exceptions with the gcd() function */
+
+
+
+                                       
+                                       
+                                          //******** PART 2 ********
+
+
+                                               /* didnt do yet */
+
+
+                                         
+                                         
+                                          //******** PART 3 ********
+
+	                                            /* didnt do yet */
+
+
+                                       
+                                       
+                                          //******** PART 4 ******** 
+/*  
+    Since we never did it before, we tried to make a menu for fun. Hope thats okay.
+	  So each function has a counterpart with "Run" in the function name for interacting with the user .
+*/
+
+
+
+int fib(int a)
+{
+	//Base case
+	if (a == 1) return 1;
+	if (a == 2) return 1;
+	
+	//Recursive Case
+	return fib(a-1)+fib(a-2);
+}
+int fibRun()
+{
+	int a; 
+		cout << "Please enter an integer: ";
+		cin >> a;
+		cout << fib(a);
+}
+
+
+
+
+int power(int a, int b)
+{ 
+	if (b>=0) return pow(a,b);
+    else throw "Please enter positive exponent.";
+}
+int powRun()
+{
+	int a; int b; 
+		cout << "Please enter a number: ";
+		cin >> a;
+		cout << endl << endl << "Please enter the exponent: ";
+		cin >> b;
+	try 
+	{
+		power(a,b);
+	} 
+	catch (char const * j)
+	{
+		cout << endl<< j << endl;
+	}
+	cout << endl<< power(a,b) << endl;
+	return 0;
+		
+}
+
+
+
+
+int tri(int a)
+{
+	//Base Case
+	if (a==1) return 1;
+	
+	//Recursive Case
+	return a + tri(a-1);
+			
+}
+int triRun()
+{
+	int a;
+	cout << "Please enter an integer: ";
+	cin >> a;
+	cout << endl << endl << tri(a) << endl;
+} 
+
+
+
+
+int gcd(int a, int b)
+{
+	//Base cases
+	if (a<0) throw "Invalid Number";
+	if (b<0) throw "Invalid Number";
+	if (a==0 || b==0) return a+b;
+	
+	//Recursive Cases
+	if (a > b) return gcd(a-b, b);
+	if (b > a) return gcd(a, b-a);
+	
+}
+int gcdRun()
+{
+	int a; int b; 
+		cout << "Please enter the first integer: ";
+		cin >> a;
+		cout << "\nPlease enter the second integer: ";
+		cin >> b ;
+	try 
+	{
+		gcd(a,b);
+	} 
+	catch (char const * j)
+	{
+		cout << endl<< j << endl;
+	}
+	cout << endl<< gcd(a,b);
+	return 0;
+}
+
+
+
+
+int main()
+{
+	int menuChoice;
+	
+	cout << "Please Select a Calculator\n\n"
+		 << "1. Greatest Common Divisor\n" 
+		 << "2. Fibonachi Number\n"
+		 <<	"3. Exponential Power\n"
+		 << "4. Triangular Number\n"
+		 << "5. Exit\n" << endl;
+		 
+		
+	
+	do
+	{
+		cin >> menuChoice;
+		cout<< endl;
+		
+		switch (menuChoice)
+		{
+			case 1 : gcdRun();
+				break;
+			case 2 : fibRun();
+				break;
+			case 3 : powRun();
+				break;
+			case 4 : triRun();
+				break;
+			case 5 : break;
+			default : cout << "Please enter a valid menu choice.\n\n";
+				
+		}
+		
+	}while(menuChoice<=0 || menuChoice >=6);
+			
+
+}
